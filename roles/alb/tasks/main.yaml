@@ -1,0 +1,20 @@
+- name: Create IAM Managed Policy
+  iam_managed_policy:
+    policy_name: "ALBIngressControllerIAMPolicy"
+    policy: "{{ lookup('template', 'alb-iam-policy.json') }}"
+    state: present
+
+- name: helm installer
+  get_url: url=https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 dest=/tmp/get_helm.sh mode=0755
+
+- name: Execute the get_helm.sh
+  shell: /tmp/get_helm.sh
+
+- name: Remove the get_helm.sh
+  file: path=/tmp/get_helm.sh state=absent
+
+- name: Add ALB Helm REPO
+  shell: helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+
+- name: Install ALB Ingress Controller
+  shell: helm install alb-ingress-controller --kubeconfig=/var/lib/jenkins/.kube/demo.config incubator/aws-alb-ingress-controller --set clusterName={{ eks_cluster_name }} --set AwsRegion={{ eks_region }} --set autoDiscoverAwsVpcID=true
