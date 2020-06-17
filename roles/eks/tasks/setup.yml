@@ -168,9 +168,9 @@
   #  include_role:
   #    name: ingress-nginx
 
-- name: install ALB ingress
-  include_role:
-    name: alb
+#- name: install ALB ingress
+#  include_role:
+#    name: alb
 
 
 - name: write helpful message
