@@ -1,7 +1,8 @@
 # EKS_Ansible
 
-Part 2: Task
-High-Level Outcome: - Enable us to launch a new microservice(s) in Kubernetes on a highly available and load balanced public cloud environment (eg: AWS) from scratch. 
+Part 2: 
+
+Task High-Level Outcome: - Enable us to launch a new microservice(s) in Kubernetes on a highly available and load balanced public cloud environment (eg: AWS) from scratch. 
 
 Problem statement: - Assuming that the highly available and load-balanced cloud environment and Kubernetes cluster exists, you are required to automate the deployment pipeline using Jenkins to containerize and deploy the application to Kubernetes. 
 
